@@ -32,8 +32,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
    
 # Orignal assignment
 
-!(images/assignment_p1.png?raw=True)
-!(images/assignment_p2.png?raw=True)
+![screenshot](./images/assignment_p1.png?raw=True)
+![screenshot](./images/assignment_p2.png?raw=True)
 # Who I am
 
 My background is in systems administration.  Six years ago, I was introduced to and received training in DevOps and LEAN / Agile practices as they aligned with Infrastructure Engineering.  I learned version control with git (which complimented my having deployed GitHub Enterprise for my company), sprint planning (story writing, sprint planning, retrospectives, product ownership and scrum management), configuration management (using Puppet), and infrastructure automation.  I do not consider myself a developer.  I am currently learning Python.  For the past two years, I have been a member of a Platform Engineering team, responsible for deployment and configuration of tools and services on-prem to support development and business teams.  I have managed and deployed instances of ELK clusters (load-balanced with Ngninx and HAProxy), Hashicorp Consul and Vault clusters, and collaborated with several members of my team to implement automation of F5 iRules, pools, and nodes using Terraform.  Currently, I am working with my teammates to demonstrate contanerinizing Java microservices and deploying to on-prem Kubernetes clusters (which my team has deployed).
