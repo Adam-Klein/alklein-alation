@@ -41,6 +41,8 @@ App:
 
 ## Terraform to AWS
 
+### In progress - may not be completed
+
 * Assumptions / requirements
   * Account with and credentials for Amazon Web Services
   * Willingness to pay incurred charges for deploying four-node Kubernetes cluster with 
