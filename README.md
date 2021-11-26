@@ -6,7 +6,7 @@
 
 A web-hit-counter implemented in Python with Flask, Gunicorn and Redis. Running under container (Docker) orchestration (Kubernetes), with an Ngnix load-balancer.  Access web hit counter by URL (browser or command-line).  Counter is incremented by one for each successful connection.  Count data is stored in and retrieved from redis database.  The python app includes a health-check which is referenced via Kubernetes livenessProbe. 
 
-Successfull connection returns "Holla! we have hit <number> times" (where <number> is the current total of successful connections)
+Successfull connection returns "Holla! we have hit *number* times" (where *number* is the current total of successful connections)
 # Running web hit counter
 
 ## Minikube 
