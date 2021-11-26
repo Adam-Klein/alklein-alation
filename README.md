@@ -42,9 +42,9 @@ My background is in systems administration.  Six years ago, I was introduced to 
 
 I did not approach the assignment with a great deal of confidence. I am not a developer, my coding skills are not strong, and I while I understood the underlying concepts of the assignment, I did not know how far I would get.
 
-A teammate of mine had recently demoed a Flask app, so I started by looking up python web hit counters.  I was able to identify a starting point, and put together a basic python app with Flask.  I was not familiar with Gunicorn and ran into a couple of issues I was able to work through (workers not starting).  I have worked with containers for a few years, and was able to put together Dockerfiles for the Flask app and the nginx load balancer.  
+A teammate of mine had recently demoed a Flask app.  When I started by looking up python web hit counters, I saw one implemented with Flask and this allowed me to identify a starting point. I was not familiar with Gunicorn and ran into a couple of issues I was able to work through (workers not starting).  I have worked with containers for a few years, and was able to put together Dockerfiles for the Flask app and the nginx load balancer.  
 
-Once I had the solution working with a docker compose file, I had a lot of frustration with the python source not updating in the container image even after I stopped and deleted the older containers and images.  *I am still puzzling out why I had to manually edit the code in the container to get the update to work*.  
+Once I had the solution working with a docker-compose file, I had a lot of frustration with the python source not updating in the container image even after I stopped and deleted the older containers and images.  *I am still puzzling out why I had to manually edit the code in the container to get the update to work, but once I did this, the new image builds worked.* 
 
 I found the Kompose app which converts a docker-compose file into separate yaml files for kubernetes deployments, services, etc. The original configuration for the Python flask app created a separate directory and made a volume mount, which I found was unnecessary when deploying in Kubernetes. Minikube does not support a LoadBalancer exposing an external port, but there are a few ways to access it:
 
