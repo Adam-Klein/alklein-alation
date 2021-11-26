@@ -1,12 +1,12 @@
 import redis
-from flask import Flask
+from flask import Flask,jsonify
 app = Flask(__name__)
 redis = redis.Redis(host='redis', port=6379, db=0)
 @app.route('/')
-def hello_world():
-     return 'This is a Python Flask Application with redis and accessed through Nginx'
-@app.route('/visitor')
-def visitor():
+def holla():
      redis.incr('visitor')
      visitor_num = redis.get('visitor').decode("utf-8")
      return "Holla!  we have hit %s times" % (visitor_num)
+@app.route('/health')
+def health():
+    return jsonify({"status": "UP"}), 200
