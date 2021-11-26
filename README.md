@@ -2,6 +2,9 @@
 
 ## SRE assignment for Adam Klein <alklein@gmail.com>
 
+# Synopsis
+
+A web-hit-counter implemented in Python with Flask, Gunicorn and Redis. Running under container (Docker) orchestration (Kubernetes), with an Ngnix load-balancer.  Access web hit counter by URL (browser or command-line).  Counter is incremented by one for each successful connection.  Count data is stored in and retrieved from redis database.  The python app includes a health-check which is referenced via Kubernetes livenessProbe. 
 # Running web hit counter
 
 ## Minikube 
@@ -17,6 +20,7 @@
   3. `kubectl create -f .`
   4. `minikube service proxy --url`
   5. Access URL that is returned in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
+  6. Health-check is accessible at `/health`
 
 ## Terraform to AWS
 
@@ -72,6 +76,7 @@ I found the Kompose app which converts a docker-compose file into separate yaml 
 * `minikube service --url <service-name>`
 * Access service port through `minikube dashboard`
 * Access service through temporary forwarded port (using a tool like Lens)
+* Access healthcheck at `http://<URL>/health`
 
 ## Challenges
 
