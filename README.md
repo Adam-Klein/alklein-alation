@@ -24,6 +24,21 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   5. Access URL that is returned in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
   6. Health-check is accessible at `/health`
 
+# Monitoring
+
+Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
+
+App:
+```
+- job_name: Hit counter app
+  target: app:8000
+- job_name: Hit counter redis db
+  target: redis:6379
+- job_name: Hit counter LB
+  target: proxy:80
+```
+
+
 ## Terraform to AWS
 
 * Assumptions / requirements
