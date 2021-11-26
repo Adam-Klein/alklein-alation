@@ -1,8 +1,4 @@
 FROM python:alpine
-#RUN mkdir /app
-#WORKDIR /app
-#ADD requirements.txt /app
-#ADD main.py /app
 COPY requirements.txt .
 COPY main.py .
 RUN pip3 install -r requirements.txt && pip3 install --upgrade pip
