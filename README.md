@@ -32,35 +32,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
    
 # Orignal assignment
 
-Create a simple counter web application using python or Golang. Whenever we hit the URL, it
-should return a “Holla! we have hit <counter> times” should print on the webpage . You can
-make use of Redis or any database for storing the counter value.
-
-Containerize all the web applications and build the images using docker and run it on K8s.
-GuideLines:
-In order to keep this exercise repeatable by our staff we have chosen the minikube cluster and
-docker for building images. Selection of OS, config management, and software packages are up
-to you. We only ask you to follow the guidelines below.
-
-Required Tools:
-● Minikube
-○ https://minikube.sigs.k8s.io/
-● Docker
-○ https://www.docker.com/get-started
-
-Additional Tools:
-● FOSS(Free and open source software)
-● External software dependencies must be hosted on the public internet
-Submission:
-● DeadLine: 1 week from the time you have received this document
-● We will accept zip, or tar.gz or helm charts formats or Github
-● Readme file on how to re-create your environment file
-● Your submission must be repeatable by a staff member at Alation
-Review Process:
-● Alation will make an effort to re-create your environment in our lab using instructions
-provided in your readme
-● If we run into issues re-creating your environment we may reach out to you for further clarification
-
+!(images/assignment_p1.png?raw=True)
+!(images/assignment_p2.png?raw=True)
 # Who I am
 
 My background is in systems administration.  Six years ago, I was introduced to and received training in DevOps and LEAN / Agile practices as they aligned with Infrastructure Engineering.  I learned version control with git (which complimented my having deployed GitHub Enterprise for my company), sprint planning (story writing, sprint planning, retrospectives, product ownership and scrum management), configuration management (using Puppet), and infrastructure automation.  I do not consider myself a developer.  I am currently learning Python.  For the past two years, I have been a member of a Platform Engineering team, responsible for deployment and configuration of tools and services on-prem to support development and business teams.  I have managed and deployed instances of ELK clusters (load-balanced with Ngninx and HAProxy), Hashicorp Consul and Vault clusters, and collaborated with several members of my team to implement automation of F5 iRules, pools, and nodes using Terraform.  Currently, I am working with my teammates to demonstrate contanerinizing Java microservices and deploying to on-prem Kubernetes clusters (which my team has deployed).
