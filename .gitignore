@@ -1,0 +1,5 @@
+terraform/aws*
+terraform.tfstate
+terraform/.terraform*
+terraform/cluster-role-trust-policy.json
+terraform/terraform.tfstate.backup*
