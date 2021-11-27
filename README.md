@@ -24,25 +24,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   5. Access URL that is returned either in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
   6. Health-check is accessible at `/health`
 
-# Monitoring
-
-Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
-
-App:
-```
-- job_name: Hit counter app
-  target: app:8000
-- job_name: Hit counter redis db
-  target: redis:6379
-- job_name: Hit counter LB
-  target: proxy:80
-```
-
-
 ## Terraform to AWS
 ### In progress - may not be completed
-
-
 
 * Assumptions / requirements
   1. Access to AWS with appropriate IAM permissions, including EKS write / view 
@@ -56,6 +39,19 @@ App:
   2. `cd alklein-alation/kubernetes`
   3. `cd Terraform`
   4. `terraform plan`
+# Monitoring
+
+Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
+
+App:
+```
+- job_name: Hit counter app
+  target: app:8000
+- job_name: Hit counter redis db
+  target: redis:6379
+- job_name: Hit counter LB
+  target: proxy:80
+```
 # Orignal assignment
 
 ![screenshot](./images/assignment_p1.png?raw=True)
