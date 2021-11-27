@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: app
+    service: app
   name: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: app
+      service: app
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        io.kompose.service: app
+        service: app
     spec:
       containers:
       - image: alklein/alklein_alation_app

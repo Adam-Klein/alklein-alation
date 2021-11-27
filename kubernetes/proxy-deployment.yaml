@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: proxy
+      service: proxy
   strategy: {}
   template:
     metadata:
       labels:
-        io.kompose.service: proxy
+        service: proxy
     spec:
       containers:
       - image: alklein/alklein_alation_proxy
