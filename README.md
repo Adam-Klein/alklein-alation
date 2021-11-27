@@ -4,10 +4,10 @@
 
 # Synopsis
 
-A web-hit-counter implemented in Python with Flask and Gunicorn, storing the count in a Redis instance, load balanced by an Nginx instance. Running under container (Docker) orchestration (Kubernetes).  Access web hit counter via URL (browser or command-line).  Counter is incremented by one for each successful connection.  Count data is stored in and retrieved from the redis database.  The python app includes a health-check which is referenced via Kubernetes livenessProbe. 
+A web-hit-counter implemented in Python with Flask and Gunicorn, storing the count a Redis db, load balanced by an Nginx instance. Running under container (Docker) orchestration (Kubernetes).  Access web hit counter via URL (browser or command-line).  Counter is incremented by one for each successful connection. The app includes a health-check which is referenced via Kubernetes livenessProbe. 
 
 Successfull connection returns "Holla! we have hit *number* times" (where *number* is the current total of successful connections)
-# Running web hit counter
+# Deploying and running the counter
 
 ## Minikube 
 
@@ -24,6 +24,21 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   5. Access URL that is returned either in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
   6. Health-check is accessible at `/health`
 
+## Terraform to AWS
+### In progress - may not be completed
+
+* Assumptions / requirements
+  1. Access to AWS with appropriate IAM permissions, including EKS write / view 
+  2. Terraform recent version installed on host system
+  3. Access to github.com
+  4. git recent version installed on host system
+  5. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
+
+* Deploying
+  1.  `git clone https://github.com/Adam-Klein/alklein-alation.git`
+  2. `cd alklein-alation/kubernetes`
+  3. `cd Terraform`
+  4. `terraform plan`
 # Monitoring
 
 Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
@@ -37,16 +52,6 @@ App:
 - job_name: Hit counter LB
   target: proxy:80
 ```
-
-
-## Terraform to AWS
-
-### In progress - may not be completed
-
-* Assumptions / requirements
-  * AWS account
-  * Willingness to pay incurred charges for deploying four-node Kubernetes cluster with 
-   
 # Orignal assignment
 
 ![screenshot](./images/assignment_p1.png?raw=True)
