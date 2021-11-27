@@ -13,8 +13,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 
 * Assumptions / requirements: 
   * Up and running minikube instance (see https://kubernetes.io/docs/tutorials/hello-minikube/).
-  * Access to https://github.com
-  * Access to https://hub.docker.com
+  * Access to https://github.com (and I remembered to make the repo public)
+  * Access to https://hub.docker.com (and I remembered to switch the image repo back to public)
 
 * Deploying:
   1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
