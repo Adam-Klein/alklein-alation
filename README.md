@@ -73,3 +73,11 @@ I found the Kompose app which converts a docker-compose file into separate yaml 
 ## Challenges
 
 I have worked with Python requirements enough to know that maintaining a static requirements file is adding to rather than reducing tech debt.  I have started using requirements.in files and using python virtual environments, then running `source venv/bin/activate ; pip install pip-tools; pip-compile; pip-sync`  I am planning to re-implement the docker-compose to do this in the build.
+
+## What I liked
+
+This experience was pleasantly uncomfortable for me.  Much of this work was outside my comfort zone, and required exercising patience when things didn't work the way I expected, but I was able to solve and overcome many of the challenges I encountered.
+
+## What I didn't like
+
+Thinking I know how something works and being realizing I don't can be a struggle for me.  I do not have a problem admitting I don't know something and am very interested in learning more.  Parts of this exercize I thought I understood but struggled to realize I did not understand as well as I thought were frustrating.  I have deployed small Kubernetes clusters to AWS with kops many times, and deployed some services to them, and I have done some Terraform work with my team; but implementing the Terraform Kubernetes provider to provision the deployments and services to AWS wound up very frustrating as both the deployment and connectivity failed.  I just didn't have time to unravel the parts that weren't working and resolve them.  Not being able to get these working was frustrating.
