@@ -14,7 +14,7 @@ spec:
         service: proxy
     spec:
       containers:
-      - image: alklein/alklein_alation_proxy
+      - image: alklein/alation_proxy
         imagePullPolicy: "IfNotPresent"
         name: proxy
         ports:

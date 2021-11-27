@@ -17,7 +17,7 @@ spec:
         service: app
     spec:
       containers:
-      - image: alklein/alklein_alation_app
+      - image: alklein/alation_app
         livenessProbe:
           httpGet:
             path: /health
