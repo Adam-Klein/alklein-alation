@@ -21,13 +21,20 @@ resource "kubernetes_deployment" "app" {
   }
 
   spec {
-    replicas = 1
-
+    replicas = 4
     selector {
       match_labels = {
         service = "app"
       }
     }
+
+  strategy {
+    type = RollingUpdate
+    rollingUpdate {
+      maxSurge = 25%
+      maxUnavailable = 25%
+    }
+  }
 
     template {
       metadata {
@@ -91,6 +98,14 @@ resource "kubernetes_deployment" "proxy" {
       }
     }
 
+  strategy {
+    type = RollingUpdate
+    rollingUpdate {
+      maxSurge = 1
+      maxUnavailable = 0
+    }
+  }
+
     template {
       metadata {
         labels = {
@@ -142,6 +157,14 @@ resource "kubernetes_deployment" "redis" {
         service = "redis"
       }
     }
+
+  strategy {
+    type = RollingUpdate
+    rollingUpdate {
+      maxSurge = 1
+      maxUnavailable = 0
+    }
+  }
 
     template {
       metadata {
