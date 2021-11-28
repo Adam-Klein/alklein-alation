@@ -14,6 +14,7 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   * Access to https://hub.docker.com
   * Recent version of git installed on host system
 
+
   1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
 ## Minikube 
 
@@ -24,10 +25,10 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 
 * Deploying
   
-      With `kubectl`:
+      With kubectl:
 
       1. `cd alklein-alation/kubernetes`
-      2. `kubectl create -f .`  
+      2. `kubectl create -f .`
 
       with Terraform:
 
