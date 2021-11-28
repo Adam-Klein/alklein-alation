@@ -14,37 +14,38 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   * Access to https://hub.docker.com
   * Recent version of git installed on host system
 
+  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
 ## Minikube 
 
 * Assumptions / requirements: 
   * Up and running minikube instance (see https://kubernetes.io/docs/tutorials/hello-minikube/).
   * Recent version of `kubectl` installed and working, `kubectl config current-context` returns `minikube` (if deploying with kubectl)
   * Recent version of Terraform installed and working (if deploying with Terraform)
+
+* Deploying
   
-  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
+      With `kubectl`:
 
-    With `kubectl`:
+      1. `cd alklein-alation/kubernetes`
+      2. `kubectl create -f .`  
 
-    1. `cd alklein-alation/kubernetes`
-    2. `kubectl create -f .`
-    3. `minikube service proxy --url` or `minikube tunnel`
-    4. If you used service proxy, Access URL that is returned either in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
-    5. If you used minikube tunnel, in another terminal window, `kubectl get service proxy` and use IP address returned under "EXTERNAL-IP" to access URL or curl http://`IP_address`
+      with Terraform:
 
-    with Terraform:
-
-    1. `terraform init`
-    2. `terraform plan`
-    3. `terraform apply`
-      1. Enter `yes` when prompted
-    4. `minikube tunnel`
+      1. `cd alklein-alation/terraform`
+      2. `terraform init`
+      3. `terraform plan`
+      4. `terraform apply`
+        1. Enter `yes` when prompted
+  
+   1. `minikube tunnel`
+   2. In another terminal (as minikube tunnel will tie up your terminal), `kubectl get service proxy` 
+   3. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
 ## Terraform to AWS
-### Partially completed / not fully functional (could not work out IAM permissions for Kubernetes cluster)
 
 * Assumptions / requirements
   1. Access to AWS with appropriate IAM permissions, including EKS write / view 
   2. Terraform recent version installed on host system
-  4. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
+  3. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
 
 * Deploying
   1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
@@ -53,6 +54,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   4. `terraform init`
   5. `terraform plan`
   6. `terraform apply` (enter `yes` when prompted)
+  7. `kubectl get services proxy`
+  8. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
 
 # Monitoring
 
