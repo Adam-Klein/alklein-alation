@@ -18,26 +18,25 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 
 * Assumptions / requirements: 
   * Up and running minikube instance (see https://kubernetes.io/docs/tutorials/hello-minikube/).
-  * Recent version of `kubectl` installed and working, `kubectl config current-context` returns `minikube`
+  * Recent version of `kubectl` installed and working, `kubectl config current-context` returns `minikube` (if deploying with kubectl)
+  * Recent version of Terraform installed and working (if deploying with Terraform)
+  
+  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
 
-* Deploying:
-  
-    1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
-    2. `cd alklein-alation/kubernetes`
-  
     With `kubectl`:
 
-    3. `kubectl create -f .`
-    4. `minikube service proxy --url` or `minikube tunnel`
-    5. If you used service proxy, Access URL that is returned either in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
-    6. If you used minikube tunnel, in another terminal window, `kubectl get service proxy` and use IP address returned under "EXTERNAL-IP" to access URL or curl http://`IP_address`
+    1. `cd alklein-alation/kubernetes`
+    2. `kubectl create -f .`
+    3. `minikube service proxy --url` or `minikube tunnel`
+    4. If you used service proxy, Access URL that is returned either in browser or with `curl` (e.g. `curl http://192.168.49.2:31315`)
+    5. If you used minikube tunnel, in another terminal window, `kubectl get service proxy` and use IP address returned under "EXTERNAL-IP" to access URL or curl http://`IP_address`
 
     with Terraform:
 
     1. `terraform init`
     2. `terraform plan`
     3. `terraform apply`
-       1. Enter `yes` when prompted
+      1. Enter `yes` when prompted
     4. `minikube tunnel`
 ## Terraform to AWS
 ### Partially completed / not fully functional (could not work out IAM permissions for Kubernetes cluster)
@@ -51,8 +50,9 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
   2. `cd alklein-alation/kubernetes`
   3. `cd Terraform`
-  4. `terraform plan`
-  5. `terraform apply` (enter `yes` when prompted)
+  4. `terraform init`
+  5. `terraform plan`
+  6. `terraform apply` (enter `yes` when prompted)
 
 # Monitoring
 
