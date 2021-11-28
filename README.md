@@ -51,7 +51,7 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   2. Terraform recent version installed on host system
   3. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
 
-* Deploying
+* Deploying (not fully tested, see challenges comment about IAM)
   1.  `git clone https://github.com/Adam-Klein/alklein-alation.git`
   2.  `cd alklein-alation/terraform`
   3. `terraform init`
