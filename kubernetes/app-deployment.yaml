@@ -5,28 +5,29 @@ metadata:
     service: app
   name: app
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       service: app
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
         service: app
     spec:
       containers:
-      - image: alklein/alation_app
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
+      - image: alklein/alation_app:1.4.0
         imagePullPolicy: "IfNotPresent"
         name: app
         ports:
         - containerPort: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
         resources: {}
       restartPolicy: Always
-      serviceAccountName: ""
-
