@@ -40,7 +40,7 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
    1. `minikube tunnel`
    2. In another terminal (as minikube tunnel will tie up your terminal), `kubectl get service proxy` 
    3. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
-## Terraform to AWS
+## AWS
 
 * Assumptions / requirements
   1. Access to AWS with appropriate IAM permissions, including EKS write / view 
