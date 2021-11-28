@@ -7,6 +7,8 @@
 A web-hit-counter implemented in Python with Flask and Gunicorn, storing the count a Redis db, load balanced by an Nginx instance. Running under container (Docker) orchestration (Kubernetes).  Access web hit counter via URL (browser or command-line).  Counter is incremented by one for each successful connection. The app includes a health-check which is referenced via Kubernetes livenessProbe. 
 
 Successfull connection returns "Holla! we have hit *number* times" (where *number* is the current total of successful connections)
+
+* _Note - I included the source for the python / flask app and docker files for each component to provide visiblity into my development process.  In a production implementation, I would have included only the yaml files or Terraform tf files._
 # Deploying and running the counter
 
 * Assumptions / requirements:
