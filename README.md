@@ -55,8 +55,11 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   3. `terraform init`
   4. `terraform plan`
   5. `terraform apply` (enter `yes` when prompted)
-  6. `kubectl get services proxy`
-  7. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
+
+  Accessing the app:
+
+  1.   `kubectl get services proxy`
+  2.   With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
 
 # Monitoring
 
