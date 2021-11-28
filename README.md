@@ -10,8 +10,8 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 # Deploying and running the counter
 
 * Assumptions / requirements:
-  * Access to https://github.com (and I remembered to make the repo public)
-  * Access to https://hub.docker.com (and I remembered to switch the image repo back to public)
+  * Access to https://github.com
+  * Access to https://hub.docker.com
   * Recent version of git installed on host system
 
 ## Minikube 
