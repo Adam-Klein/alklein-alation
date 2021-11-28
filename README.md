@@ -28,7 +28,7 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   6. Health-check is accessible at `/health`
 
 ## Terraform to AWS
-### In progress - may not be completed
+### In progress - not fully functional
 
 * Assumptions / requirements
   1. Access to AWS with appropriate IAM permissions, including EKS write / view 
@@ -41,6 +41,7 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   3. `cd Terraform`
   4. `terraform plan`
   5. `terraform apply` (enter `yes` when prompted)
+
 # Monitoring
 
 Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
@@ -76,13 +77,14 @@ I found the Kompose app which converts a docker-compose file into separate yaml 
 * Access service port through `minikube dashboard`
 * Access service through temporary forwarded port (using a tool like Lens)
 
+## Update strategy
+* App and Proxy deployments have strategy configured as `RollingUpdate` which should allow for a zero-downtime upgrade or rollback, with `MaxSurge` and `MaxUnavailable` set.  I'm not sure how to manage a rolling ugprade of a load-balancer though.  I did not have time to test the upgrade implementation. A `kubectl set image deployment/app alation_app:<new_ver>` would peform a rolling upgrade from the version described in the deployment `.yaml` file to the `<new_ver>`.  Alternatively, updating the image in the deployment `.yaml` file and performing a `kubectl apply -f <deployment_file>.yaml` would have the same result. 
 ## Challenges
 
-My first struggle was with gunicorn and workers not starting.  I corrected a few typos and experimented to better understand the Flask syntax.  
+* Getting the docker-compose file translated properly into Kubernetes deployment and service files.
+* I struggled with (and was not able to resolve) deploying to an AWS Kubernetes cluster (either deployed with Kops or an EKS instance) using Terraform. I don't know if the issue was IAM rights, a connectivity issue between components, or something wrong in the Terraform implementation.
+* I am not experienced with resource requests and limits - I understand what they are for and mean, but I was not able to determine useful values for the app and proxy
 
-The next challenge was in getting the docker-compose file translated properly into Kubernetes deployment and service files.  I was able to correct some unnecessary configurations (mounting a volume for the python app).  
-
-Once I had the deployment and serivces working in kubernetes, I struggled with (and was not able to resolve) deploying to an AWS Kubernetes cluster (either deployed with Kops or an EKS instance) using Terraform. I don't know if the issue was IAM rights, a connectivity issue between components, or something wrong in the Terraform implementation.
 
  I have worked with Python requirements enough to know that maintaining a static requirements file is adding to rather than reducing tech debt.  I have started using requirements.in files and using python virtual environments, then running `source venv/bin/activate ; pip install pip-tools; pip-compile; pip-sync`  I am planning to re-implement the docker-compose to do this in the build.  
 
