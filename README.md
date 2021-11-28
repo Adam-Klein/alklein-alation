@@ -9,12 +9,15 @@ A web-hit-counter implemented in Python with Flask and Gunicorn, storing the cou
 Successfull connection returns "Holla! we have hit *number* times" (where *number* is the current total of successful connections)
 # Deploying and running the counter
 
+* Assumptions / requirements:
+  * Access to https://github.com (and I remembered to make the repo public)
+  * Access to https://hub.docker.com (and I remembered to switch the image repo back to public)
+  * Recent version of git installed on host system
+
 ## Minikube 
 
 * Assumptions / requirements: 
   * Up and running minikube instance (see https://kubernetes.io/docs/tutorials/hello-minikube/).
-  * Access to https://github.com (and I remembered to make the repo public)
-  * Access to https://hub.docker.com (and I remembered to switch the image repo back to public)
 
 * Deploying:
   1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
@@ -30,15 +33,14 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 * Assumptions / requirements
   1. Access to AWS with appropriate IAM permissions, including EKS write / view 
   2. Terraform recent version installed on host system
-  3. Access to github.com
-  4. git recent version installed on host system
-  5. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
+  4. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
 
 * Deploying
-  1.  `git clone https://github.com/Adam-Klein/alklein-alation.git`
+  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
   2. `cd alklein-alation/kubernetes`
   3. `cd Terraform`
   4. `terraform plan`
+  5. `terraform apply` (enter `yes` when prompted)
 # Monitoring
 
 Assuming an existing Prometheus monitoring deployment, the scrape job config for these components would be:
