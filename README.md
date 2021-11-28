@@ -48,14 +48,12 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   3. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
 
 * Deploying
-  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
-  2. `cd alklein-alation/kubernetes`
-  3. `cd Terraform`
-  4. `terraform init`
-  5. `terraform plan`
-  6. `terraform apply` (enter `yes` when prompted)
-  7. `kubectl get services proxy`
-  8. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
+  1. `cd alklein-alation/terraform`
+  2. `terraform init`
+  3. `terraform plan`
+  4. `terraform apply` (enter `yes` when prompted)
+  5. `kubectl get services proxy`
+  6. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
 
 # Monitoring
 
