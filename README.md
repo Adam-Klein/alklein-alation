@@ -13,9 +13,6 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   * Access to https://github.com
   * Access to https://hub.docker.com
   * Recent version of git installed on host system
-
-
-  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
 ## Minikube 
 
 * Assumptions / requirements: 
@@ -25,18 +22,22 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
 
 * Deploying
   
-      With kubectl:
+  1. `git clone https://github.com/Adam-Klein/alklein-alation.git`
 
-      1. `cd alklein-alation/kubernetes`
-      2. `kubectl create -f .`
+    With kubectl:
 
-      with Terraform:
+    1. `cd alklein-alation/kubernetes`
+    2. `kubectl create -f .`
 
-      1. `cd alklein-alation/terraform`
-      2. `terraform init`
-      3. `terraform plan`
-      4. `terraform apply`
-        1. Enter `yes` when prompted
+    With Terraform:
+
+    1. `cd alklein-alation/terraform`
+    2. `terraform init`
+    3. `terraform plan`
+    4. `terraform apply`
+      1. Enter `yes` when prompted
+
+  Accessing the app:
   
    1. `minikube tunnel`
    2. In another terminal (as minikube tunnel will tie up your terminal), `kubectl get service proxy` 
@@ -49,12 +50,13 @@ Successfull connection returns "Holla! we have hit *number* times" (where *numbe
   3. You are willing to incur any AWS charges for additional workload / nodes deployed to cluster
 
 * Deploying
-  1. `cd alklein-alation/terraform`
-  2. `terraform init`
-  3. `terraform plan`
-  4. `terraform apply` (enter `yes` when prompted)
-  5. `kubectl get services proxy`
-  6. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
+  1.  `git clone https://github.com/Adam-Klein/alklein-alation.git`
+  2.  `cd alklein-alation/terraform`
+  3. `terraform init`
+  4. `terraform plan`
+  5. `terraform apply` (enter `yes` when prompted)
+  6. `kubectl get services proxy`
+  7. With the IP address returned under the "EXTERNAL-IP" column, access the URL in a browser or `curl http://IP_address`
 
 # Monitoring
 
