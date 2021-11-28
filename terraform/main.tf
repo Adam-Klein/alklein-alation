@@ -29,11 +29,11 @@ resource "kubernetes_deployment" "app" {
     }
 
   strategy {
-    type = RollingUpdate
-    rollingUpdate {
-      maxSurge = 25%
-      maxUnavailable = 25%
-    }
+    type = "RollingUpdate"
+      rolling_update {
+        max_surge = "25%"
+        max_unavailable = "25%"
+      }
   }
 
     template {
@@ -45,7 +45,7 @@ resource "kubernetes_deployment" "app" {
 
       spec {
         container {
-          image = "alklein/alation_app"
+          image = "alklein/alation_app:1.4.0"
           name  = "app"
 
           liveness_probe {
@@ -54,8 +54,11 @@ resource "kubernetes_deployment" "app" {
               port = 8000
             }
 
-            initial_delay_seconds = 3
-            period_seconds        = 3
+            initial_delay_seconds = 5
+            period_seconds        = 10
+            timeout_seconds       = 3
+            success_threshold     = 1
+            failure_threshold     = 3
           }
         }
       }
@@ -99,11 +102,11 @@ resource "kubernetes_deployment" "proxy" {
     }
 
   strategy {
-    type = RollingUpdate
-    rollingUpdate {
-      maxSurge = 1
-      maxUnavailable = 0
-    }
+    type = "RollingUpdate"
+      rolling_update {
+        max_surge = 1
+        max_unavailable = 0
+      }
   }
 
     template {
@@ -115,8 +118,22 @@ resource "kubernetes_deployment" "proxy" {
 
       spec {
         container {
-          image = "alklein/alation_proxy"
+          image = "alklein/alation_proxy:1.3.0"
           name  = "proxy"
+
+          liveness_probe {
+            http_get {
+              scheme = "HTTP"
+              path = "/health"
+              port = 80
+            }
+
+            initial_delay_seconds = 7
+            period_seconds        = 10
+            timeout_seconds       = 3
+            success_threshold     = 1
+            failure_threshold     = 3
+          }
         }
       }
     }
@@ -159,11 +176,11 @@ resource "kubernetes_deployment" "redis" {
     }
 
   strategy {
-    type = RollingUpdate
-    rollingUpdate {
-      maxSurge = 1
-      maxUnavailable = 0
-    }
+    type = "RollingUpdate"
+      rolling_update {
+        max_surge = 1
+        max_unavailable = 0
+      }
   }
 
     template {
@@ -177,6 +194,18 @@ resource "kubernetes_deployment" "redis" {
         container {
           image = "redis:alpine"
           name  = "redis"
+
+          liveness_probe {
+            tcp_socket {
+              port = 6379
+            }
+
+            initial_delay_seconds = 5
+            period_seconds        = 10
+            timeout_seconds       = 3
+            success_threshold     = 1
+            failure_threshold     = 3
+          }
         }
       }
     }
