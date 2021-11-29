@@ -83,7 +83,8 @@ App:
 ![screenshot](./images/assignment_p2.png?raw=True)
 
 ## Update strategy
-* App, Proxy, and Redis deployments are configured with `strategy` of `RollingUpdate` which should allow for a zero-downtime upgrade or rollback, with `MaxSurge` and `MaxUnavailable` set (25% for the app, 1 for the proxy and db).  I did not have time to test the upgrade implementation. A `kubectl set image deployment/app alation_app:[new_ver]` would peform a rolling upgrade from the version described in the deployment file to `[new_ver]`. Alternatively, updating the image in the deployment `.yaml` file and performing a `kubectl apply -f "deployment_file".yaml` would have the same result. If `kubectl set image` is used, once test is completed, the app version should be updated in the yaml and terraform files to reflect current state.
+* App, Proxy, and Redis deployments are configured with `strategy` of `RollingUpdate` which should allow for a zero-downtime upgrade or rollback, with `MaxSurge` and `MaxUnavailable` set (25% for the app, 1 for the proxy and db).  I did not have time to test the upgrade implementation. A `kubectl set image deployment/app alation_app:[new_ver]` would peform a rolling upgrade from the version described in the deployment file to `[new_ver]`. Alternatively, updating the image in the deployment `.yaml` file and performing a `kubectl apply -f "deployment_file".yaml` would have the same result. If `kubectl set image` is used, once testing is completed, the image version should be updated in the yaml and terraform files to reflect current state.
+
 ## Challenges
 
 * Getting the docker-compose file translated properly into Kubernetes deployment and service files.
@@ -93,9 +94,10 @@ App:
 
 ## What I liked about my solution
 
-I very much enjoyed the process of developing and testing the app, implementing it in a container, then deploying it to Kubernetes.  The simplicty of Flask is not something I have worked with before, but it definitely made the process easy.  I had a lot of fun testing and learning (as I often experience when learning new patterns).  The decomposability of containerization and container orchestration is very appealing to me.  
+I very much enjoyed the process of developing and testing the app, implementing it in a container, then deploying it to Kubernetes.  The simplicty of Flask is not something I have worked with before, but it definitely made the process easy.  I had a lot of fun testing and learning (as I often experience when working with new patterns).  The decomposability of containerization and container orchestration is very appealing to me.  
 
 I liked being able to implement patterns I have used in the past and seen implemented elsewhere in this solution. I was not familiar with and plan to learn more about gunicorn. Including a healh check was simple and provides a useful way to ensure the app and proxy are functioning.  I was very pleased to be able to implement the rolling update strategy and plan to learn more about this pattern
+
 ## What I didn't like about my solution
 
 I was frustrated by my not being able to get the pattern of a python `requirements.in` file implemented for the container.  I have learned a great deal over the past few years, and as I have learned more, I have recognized the accumulated tech debt that some of the old patterns created.  I don't know there is much optimization or further modularization that can be done with a web hit counter, but I would be interested in learning what reasonable improvements can be made (at least up to a point of diminishing returns).  I was frustrated at not fully understanding IAM roles and permissions in AWS, and would liked to have been able to deploy an EKS cluster and successfully deploy the app to it and validate the proxy implementation.
