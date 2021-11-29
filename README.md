@@ -81,8 +81,9 @@ App:
 
 ![screenshot](./images/assignment_p1.png?raw=True)
 ![screenshot](./images/assignment_p2.png?raw=True)
+
 ## Update strategy
-* App, Proxy, and Redis deployments are configured with `strategy` of `RollingUpdate` which should allow for a zero-downtime upgrade or rollback, with `MaxSurge` and `MaxUnavailable` set (25% for the app, 1 for the proxy and db).  I did not have time to test the upgrade implementation. A `kubectl set image deployment/app alation_app:[new_ver]` would peform a rolling upgrade from the version described in the deployment file to `[new_ver]`. Alternatively, updating the image in the deployment `.yaml` file and performing a `kubectl apply -f deployment_file.yaml` would have the same result. If `kubectl set image` is used, once test is completed, the app version should be updated in the yaml and terraform files to reflect current state.
+* App, Proxy, and Redis deployments are configured with `strategy` of `RollingUpdate` which should allow for a zero-downtime upgrade or rollback, with `MaxSurge` and `MaxUnavailable` set (25% for the app, 1 for the proxy and db).  I did not have time to test the upgrade implementation. A `kubectl set image deployment/app alation_app:[new_ver]` would peform a rolling upgrade from the version described in the deployment file to `[new_ver]`. Alternatively, updating the image in the deployment `.yaml` file and performing a `kubectl apply -f "deployment_file".yaml` would have the same result. If `kubectl set image` is used, once test is completed, the app version should be updated in the yaml and terraform files to reflect current state.
 ## Challenges
 
 * Getting the docker-compose file translated properly into Kubernetes deployment and service files.
