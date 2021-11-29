@@ -36,8 +36,7 @@ Successfull connection returns **"Holla! we have hit *number* times"** (where *n
     1. `cd alklein-alation/terraform`
     2. `terraform init`
     3. `terraform plan`
-    4. `terraform apply`
-      1. Enter `yes` when prompted
+    4. `terraform apply`, enter `yes` when prompted
 
   Accessing the app:
   
